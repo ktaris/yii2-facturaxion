@@ -19,40 +19,29 @@ use yii\base\Model;
  *
  * @link http://www.ktaris.com/
  */
-class TimbrarParametros extends Model
+class CancelarParametros extends Model
 {
     /**
      * ENTRADAS DEL WS.
      */
     public $Usuario;
     public $Contrasenia;
-    public $XMLPreCFDI;
-    public $XMLOpcionales;
-    public $IdAddenda;
-    public $NodoAddenda;
-    public $IdLlaveUnico;
-    public $UUIDSucursal;
-    public $Mail;
-    public $MailCC;
-    public $MailCCO;
+    public $RFCEmisor;
+    public $FolioFiscal;
     /**
      * SALIDAS DEL WS.
      */
-    public $TimbrarParametrosResult;
-    public $XMLCFDI;
-    public $FolioFiscal;
-    public $RutaPDF;
-    public $Validacion3B;
-    public $Sugerencias3B;
+    public $CancelarParametrosResult;
+    public $EstatusRespuesta;
     public $IdValidacion;
     public $MensajeValidacion;
 
     public function rules()
     {
         return [
-            [['XMLPreCFDI', 'XMLOpcionales', 'IdAddenda', 'NodoAddenda', 'Mail', 'MailCC', 'MailCCO', 'UUIDSucursal', 'IdLlaveUnico'], 'default', 'value' => ''],
+            [['RFCEmisor', 'FolioFiscal'], 'default', 'value' => ''],
             [['Usuario', 'Contrasenia'], 'required'],
-            [['TimbrarParametrosResult', 'XMLCFDI', 'FolioFiscal', 'RutaPDF', 'Validacion3B', 'Sugerencias3B', 'IdValidacion', 'MensajeValidacion'], 'safe'],
+            [['CancelarParametrosResult', 'EstatusRespuesta', 'IdValidacion', 'MensajeValidacion'], 'safe'],
         ];
     }
 }

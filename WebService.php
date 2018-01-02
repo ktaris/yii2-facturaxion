@@ -75,11 +75,32 @@ class WebService
     /**
      * Manda a llamar el método TimbrarParametros de Facturaxión.
      *
-     * @param {link TimbrarParametros} $obj objeto con los datos para la petición.
+     * @param {@link ktaris\facturaxion\models\TimbrarParametros} $obj objeto con los datos para la petición.
      */
     public function TimbrarParametros($obj)
     {
-        $resultado_ws = $this->_cliente->TimbrarParametros($obj);
+        return $this->llamarServicio('TimbrarParametros', $obj);
+    }
+
+    /**
+     * Manda a llamar el método CancelarParametros de Facturaxión.
+     *
+     * @param {@link ktaris\facturaxion\models\CancelarParametros} $obj objeto con los datos para la petición.
+     */
+    public function CancelarParametros($obj)
+    {
+        return $this->llamarServicio('CancelarParametros', $obj);
+    }
+
+    // ==================================================================
+    //
+    // Conexión a Facturaxion
+    //
+    // ------------------------------------------------------------------
+
+    private function llamarServicio($servicio, $obj)
+    {
+        $resultado_ws = $this->_cliente->$servicio($obj);
 
         $this->vaciarDatosAObjeto($obj, $resultado_ws);
 
